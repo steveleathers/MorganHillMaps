@@ -4,8 +4,8 @@
 <meta charset=utf-8 />
 <title>Morgan Hill Service Area Maps</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-<script src='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.js'></script>
-<link href='https://api.mapbox.com/mapbox.js/v2.2.3/mapbox.css' rel='stylesheet' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.css' rel='stylesheet' />
 <style>
   body { margin:0; padding:0; }
   #map { position:absolute; top:0; bottom:0; width:100%; }
@@ -14,9 +14,13 @@
 <body>
 <div id='map'></div>
 <script>
-L.mapbox.accessToken = 'pk.eyJ1IjoibWlnY29tIiwiYSI6ImNrUllYc3MifQ.isgDkadcGHvdQKkSC1ohfQ';
-var map = L.mapbox.map('map', 'mapbox://styles/migcom/cih57o77s00129em3spt8ba0f')
-    .setView([37.131690, -121.655404], 11);
+mapboxgl.accessToken = 'pk.eyJ1IjoibWlnY29tIiwiYSI6ImNrUllYc3MifQ.isgDkadcGHvdQKkSC1ohfQ';
+var map = new mapboxgl.Map({
+  container:'map',
+  style: 'mapbox://styles/migcom/cih57o77s00129em3spt8ba0f',
+  center: [-121.655404, 37.131690],
+  zoom: 11
+});
 </script>
 </body>
 </html>
