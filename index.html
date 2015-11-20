@@ -5,6 +5,8 @@
 <title>Morgan Hill Service Area Maps</title>
 <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.js'></script>
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.css' rel='stylesheet' />
 <style>
   body { margin:0; padding:0; }
@@ -25,30 +27,45 @@
 <body>
 <div id='map'></div>
 <div id = 'legend' style:'display:none;'>
-  <svg width="20" height="20">
-    <rect width="20" height="20" style="fill:rgba(255,255,255,0);stroke-width:2.5;stroke:rgba(0,0,0,1);stroke-dasharray:6, 3, 4, 3" />
-  </svg> Morgan Hill City Boundary<br />
+  <h3>Legend</h3>
+  <h5>Click on a layer to turn it on or off.</h5>
+  <div id = 'layer-1'>
+    <svg width="20" height="20">
+      <rect width="20" height="20" style="fill:rgba(255,255,255,0);stroke-width:2.5;stroke:rgba(0,0,0,1);stroke-dasharray:6, 3, 4, 3" />
+    </svg> Morgan Hill City Boundary<br />
+  </div>
+
   <svg width="20" height="20">
     <rect width="20" height="20" style="fill:rgba(51,161,43,0.7)" />
   </svg> City Parks<br />
   <svg width="20" height="20">
       <rect width="20" height="20" style="fill:rgba(177,222,138,0.6)" />
     </svg> County Parks<br />
-  <svg width="20" height="20">
-      <rect width="20" height="20" style="fill:rgba(230,96,0,0.6)" />
-    </svg> 1/2 mile City Park Service Area<br />
-  <svg width="20" height="20">
-      <rect width="20" height="20" style="fill:rgba(252,183,98,0.6)" />
-    </svg> 1 mile City Park Service Area<br />
+  <div id = 'layer-2'>
+    <svg width="20" height="20">
+        <rect width="20" height="20" style="fill:rgba(230,96,0,0.6)" />
+      </svg> 1/2 mile City Park Service Area<br />
+  </div>
+  <div id = 'layer-3'>
+    <svg width="20" height="20">
+        <rect width="20" height="20" style="fill:rgba(252,183,98,0.6)" />
+      </svg> 1 mile City Park Service Area<br />
+  </div>
+  <div id = 'layer-4'>
     <svg width="20" height="20">
         <rect width="20" height="20" style="fill:rgba(84,39,135,0.55)" />
       </svg> 1/2 mile County Park Service Area<br />
+  </div>
+  <div id = 'layer-5'>
     <svg width="20" height="20">
         <rect width="20" height="20" style="fill:rgba(152,141,194,0.6)" />
       </svg> 1 mile County Park Service Area<br />
+  </div>
+  <div id = 'layer-6'>
     <svg width="20" height="20">
         <rect width="20" height="20" style="fill:rgba(216,218,235,0.65)" />
       </svg> 2 mile County Park Service Area<br />
+  </div>
 </div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibWlnY29tIiwiYSI6ImNrUllYc3MifQ.isgDkadcGHvdQKkSC1ohfQ';
@@ -58,6 +75,73 @@ var map = new mapboxgl.Map({
   center: [-121.655404, 37.131690],
   zoom: 12.5
 });
+$('#layer-1').click(function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  if(map.getLayoutProperty('Morgan Hill Boundary', 'visibility', 'visible')=='visible'){
+    map.setLayoutProperty('Morgan Hill Boundary', 'visibility', 'none');
+  }
+  else {
+    map.setLayoutProperty('Morgan Hill Boundary', 'visibility', 'visible');
+  }
+});
+$('#layer-2').click(function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  if(map.getLayoutProperty('0.5 mile Park Service Areas', 'visibility', 'visible')=='visible'){
+    map.setLayoutProperty('0.5 mile Park Service Areas', 'visibility', 'none');
+  }
+  else {
+    map.setLayoutProperty('0.5 mile Park Service Areas', 'visibility', 'visible');
+  }
+});
+$('#layer-3').click(function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  if(map.getLayoutProperty('1 mile Park Service Areas', 'visibility', 'visible')=='visible'){
+    map.setLayoutProperty('1 mile Park Service Areas', 'visibility', 'none');
+  }
+  else {
+    map.setLayoutProperty('1 mile Park Service Areas', 'visibility', 'visible');
+  }
+});
+$('#layer-4').click(function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  if(map.getLayoutProperty('0.5 mile County Park Service Area', 'visibility', 'visible')=='visible'){
+    map.setLayoutProperty('0.5 mile County Park Service Area', 'visibility', 'none');
+  }
+  else {
+    map.setLayoutProperty('0.5 mile County Park Service Area', 'visibility', 'visible');
+  }
+});
+$('#layer-5').click(function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  if(map.getLayoutProperty('1 mile County Park Service Areas', 'visibility', 'visible')=='visible'){
+    map.setLayoutProperty('1 mile County Park Service Areas', 'visibility', 'none');
+  }
+  else {
+    map.setLayoutProperty('1 mile County Park Service Areas', 'visibility', 'visible');
+  }
+});
+$('#layer-6').click(function(e){
+  e.preventDefault();
+  e.stopPropagation();
+
+  if(map.getLayoutProperty('2 mile County Park Service Areas', 'visibility', 'visible')=='visible'){
+    map.setLayoutProperty('2 mile County Park Service Areas', 'visibility', 'none');
+  }
+  else {
+    map.setLayoutProperty('2 mile County Park Service Areas', 'visibility', 'visible');
+  }
+});
+
 </script>
 </body>
 </html>
