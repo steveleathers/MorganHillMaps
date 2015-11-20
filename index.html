@@ -8,11 +8,48 @@
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.css' rel='stylesheet' />
 <style>
   body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
+  #map { position:absolute; top:0; bottom:0; width:100%; z-index:-1; }
+  #legend{
+    display: block;
+    float: left;
+    background-color: #FFF;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: Georgia;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+  }
 </style>
 </head>
 <body>
 <div id='map'></div>
+<div id = 'legend' style:'display:none;'>
+  <svg width="20" height="20">
+    <rect width="20" height="20" style="fill:rgba(255,255,255,0);stroke-width:2.5;stroke:rgba(0,0,0,1);stroke-dasharray:6, 3, 4, 3" />
+  </svg> Morgan Hill City Boundary<br />
+  <svg width="20" height="20">
+    <rect width="20" height="20" style="fill:rgba(51,161,43,0.7)" />
+  </svg> City Parks<br />
+  <svg width="20" height="20">
+      <rect width="20" height="20" style="fill:rgba(177,222,138,0.6)" />
+    </svg> County Parks<br />
+  <svg width="20" height="20">
+      <rect width="20" height="20" style="fill:rgba(230,96,0,0.6)" />
+    </svg> 1/2 mile City Park Service Area<br />
+  <svg width="20" height="20">
+      <rect width="20" height="20" style="fill:rgba(252,183,98,0.6)" />
+    </svg> 1 mile City Park Service Area<br />
+    <svg width="20" height="20">
+        <rect width="20" height="20" style="fill:rgba(84,39,135,0.55)" />
+      </svg> 1/2 mile County Park Service Area<br />
+    <svg width="20" height="20">
+        <rect width="20" height="20" style="fill:rgba(152,141,194,0.6)" />
+      </svg> 1 mile County Park Service Area<br />
+    <svg width="20" height="20">
+        <rect width="20" height="20" style="fill:rgba(216,218,235,0.65)" />
+      </svg> 2 mile County Park Service Area<br />
+</div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoibWlnY29tIiwiYSI6ImNrUllYc3MifQ.isgDkadcGHvdQKkSC1ohfQ';
 var map = new mapboxgl.Map({
